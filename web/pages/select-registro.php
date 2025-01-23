@@ -6,8 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uber-Sex</title>
-    <link rel="stylesheet" href="../../style.css" />
-    <link rel="stylesheet" href="../../mediasQuerys.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../mediasQuerys.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
@@ -31,7 +31,7 @@
 
         .imagen
         {
-            background-image: url('../../assets/banner2.jpg');
+            background-image: url('../assets/banner2.jpg');
             background-size: contain;
             background-position: left bottom;
             background-repeat: no-repeat;
@@ -148,7 +148,7 @@
     <div class="container m-auto">
         <div class="flex">
             <div class='container-select botones'>
-                <button class="text-container" onclick="location.href='../../register.php'">
+                <button class="text-container" onclick="location.href='../register.php'">
                     <img src="./../assets/bunnyblue.png">
                     <div class="text">
                         <h2>Registrate como Usuario!</h1>

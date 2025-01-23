@@ -61,7 +61,6 @@ if ($row['total'] > 0) {
     echo json_encode(['success' => false, 'error' => 'Este correo ya está registrado']);
     exit;
 }
-$link = mysqli_connect("localhost", "root", "", "megacobc_ubercx");
 
 // Cifrar la contraseña
 $hashed_pass = password_hash($password, PASSWORD_BCRYPT, ["cost" => 8]);

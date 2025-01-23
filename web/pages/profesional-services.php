@@ -1,5 +1,5 @@
 <?php
-$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+$root = "../";
 include_once('../php_lib/config.ini.php');
 include '../logica/panel-info.php';
 $link = mysqli_connect(SERVIDOR_MYSQL, USUARIO_MYSQL, PASSWORD_MYSQL);
