@@ -8,7 +8,7 @@
           >
             <div class="flex flex-col gap-8">
               <div class="flex items-center gap-4">
-                <img class="h-20" src="../../assets/iconBannerMain.png" alt="" />
+                <img class="h-20" src="../assets/iconBannerMain.png" alt="" />
                 <h1 class="font-bold text-4xl text-white">
                   Uber<strong class="text-4xl font-bold txt-resaltado"
                     >Sex</strong
@@ -76,13 +76,13 @@
                     class="flex w-full md:w-full items-center justify-between rounded-lg bg-violet p-2 text-sm text-white shadow-sm"
                   >
                     <div class="flex w-full gap-4 items-center font-semibold">
-                      <img src="../../assets/iconAndroid.png" alt="" srcset="" />
+                      <img src="../assets/iconAndroid.png" alt="" srcset="" />
                       Android APP
                     </div>
                     <div class="w-max w-full px-2">
                       <img
                         class="w-full"
-                        src="../../assets/arrow-top-right-white.svg"
+                        src="../assets/arrow-top-right-white.svg"
                         alt=""
                         srcset=""
                       />

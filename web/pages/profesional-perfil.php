@@ -27,9 +27,9 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uber-Sex</title>
-    <link rel="stylesheet" href="../../style.css" />
-    <link rel="stylesheet" href="../../mediasQuerys.css" />
-    <link rel="stylesheet" href="../../input.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../mediasQuerys.css" />
+    <link rel="stylesheet" href="../input.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>

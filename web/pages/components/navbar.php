@@ -1,5 +1,5 @@
 <?php
-$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+$root = '../';
 ?>
 <header
       class="w-full flex flex-col mx-auto text-white fixed duration-500 shadow-sm bg-primary-banner relative"
@@ -11,11 +11,11 @@ $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_
           class="text-2xl md:text-3xl font-bold text-white flex items-center gap-3"
         >
           <img
-            src="../../assets/iconBannerMain.png"
+            src="../assets/iconBannerMain.png"
             class="w-8 h-10 md:w-12 md:h-14"
             alt=""
           />
-          <div onclick="window.location.href = '../../index.php'">
+          <div onclick="window.location.href = '../index.php'">
             Uber<strong class="text-2xl md:text-3xl txt-resaltado font-bold"
               >Sex</strong
             >
@@ -46,7 +46,7 @@ $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_
               id="btnLang"
             >
               <img
-                src="../../assets/languajes/spain.svg"
+                src="../assets/languajes/spain.svg"
                 class="object-contain w-full h-full"
                 alt=""
               />
@@ -56,7 +56,7 @@ $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_
                   id="btnLangEU"
                 >
                   <img
-                    src="../../assets/languajes/eeuu.svg"
+                    src="../assets/languajes/eeuu.svg"
                     class="object-contain w-full h-full"
                     alt=""
                   />
@@ -66,7 +66,7 @@ $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_
                   id="btnLangFR"
                 >
                   <img
-                    src="../../assets/languajes/france.svg"
+                    src="../assets/languajes/france.svg"
                     class="object-contain w-full h-full"
                     alt=""
                   />
@@ -76,7 +76,7 @@ $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_
                   id="btnLangES"
                 >
                   <img
-                    src="../../assets/languajes/spain.svg"
+                    src="../assets/languajes/spain.svg"
                     class="object-contain w-full h-full"
                     alt=""
                   />
@@ -86,11 +86,11 @@ $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_
           </ul>
           <div class="flex gap-4 md:hidden">
             <button class="btnBuscadorMobile">
-              <img src="../../assets/search-white.svg" alt="iconSearch" />
+              <img src="../assets/search-white.svg" alt="iconSearch" />
             </button>
 
             <button id="btn-menu-toggle" class="flex">
-              <img src="../../assets/menu-toggle-white.svg" alt="iconMenuBurger" />
+              <img src="../assets/menu-toggle-white.svg" alt="iconMenuBurger" />
             </button>
           </div>
         </nav>
