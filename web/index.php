@@ -1,7 +1,7 @@
 <?php
 include_once('php_lib/config.ini.php');
 include('php_lib/conv.php');
-include('logica/ProfesionalController.php');
+include('logica/profesionalController.php');
 session_start();
 $hash=$_REQUEST['h'];      
       $link =  mysqli_connect(SERVIDOR_MYSQL, USUARIO_MYSQL, PASSWORD_MYSQL);
