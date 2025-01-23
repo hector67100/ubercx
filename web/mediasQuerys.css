@@ -1,0 +1,76 @@
+@media screen and (max-width: 768px) {
+  #text-banner {
+    position: absolute;
+    bottom: 12px;
+  }
+  #options-desktop {
+    display: none;
+  }
+  #btn-menu-toggle {
+    display: flex;
+  }
+  #filterForm{
+    height: 100%;
+    border-radius: 0px;
+  }
+  #btnBuscadorMobile{
+    display: block;
+  }
+  .descriptionCardEscort {
+    display: none !important;
+  }
+  .icons{
+    width: 14px;
+    height: 18px
+  }
+  .escortComunImg{
+    width: 140px;
+    height: 250px;
+  }
+  #escortUnoImagenExtra{
+    display: block;
+  }
+  .morePics{
+    display: none;
+  }
+  .proCard{
+    display: none;
+  }
+  .inputCustomCustom{
+    width: 6em!important;
+  }
+  #buscador{
+    height: 2.5em!important;
+    width: min-content;
+  }
+  .imgFilterIcon{
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .containerMainRegister{
+    min-height: calc(100vh - 56px)!important;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .buscadorFiltro{
+    position: absolute;
+    top: 5.6em!important;
+    left: 0;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 0 0.5em;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .buscadorFiltro{
+    position: absolute;
+    top: 4em;
+    left: 0;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 0 0.5em;
+    width: 100%;
+  }
+}

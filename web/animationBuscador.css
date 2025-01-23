@@ -1,0 +1,29 @@
+.animationBuscador {
+  animation: move 0.3s ease-in-out;
+}
+.animationBuscadorToBack {
+  animation: moveToBack 0.3s ease-in-out;
+}
+.translateBuscador{
+    transition: all 0.3s ease-in-out;
+    transform: translate(-16em, 5.4em);
+}
+.buscadorHeader{
+    transition: all 0.3s ease-in-out;
+}
+@keyframes move {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-16em, 5.4em);
+  }
+}
+@keyframes moveToBack {
+  0% {
+    transform: translate(-16em, 5.4em);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

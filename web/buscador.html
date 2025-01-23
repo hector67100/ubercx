@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uber-Sex - Buscador</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediasQuerys.css" />
+    <link rel="stylesheet" href="animationBuscador.css" />
+    <link rel="stylesheet" href="input.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header
+      class="w-full flex flex-col mx-auto text-white fixed duration-500 shadow-sm bg-primary-banner relative mb-12"
+    >
+      <nav
+        class="px-4 h-14 container md:h-20 md:container md:px-3 flex justify-between items-center mx-auto relative z-index-sup"
+      >
+        <div
+          class="flex items-center gap-2 cursor-pointer"
+          onclick="window.location.href = 'index.php'"
+        >
+          <img
+            class="w-8 h-10 md:w-12 md:h-14"
+            src="assets/iconBannerMain.png"
+            alt=""
+          />
+          <h1 class="font-bold text-2xl md:text-4xl text-white">
+            Uber<span class="txt-resaltado">Sex</span>
+          </h1>
+        </div>
+        <div class="flex items-center gap-24">
+          <div class="flex gap-4 items-center mr-16 buscadorFiltro">
+            <div
+              class="flex gap-4 items-center p-1 pl-4 rounded-full h-12 bg-buscador buscadorHeader"
+              id="buscador"
+            >
+              <input type="text" class="inputCustomCustom" />
+              <button
+                class="w-full border-0 cursor-pointer h-full bg-primary-banner hover:bg-red-700 uppercase text-purple-100 font-bold rounded-full transition-all duration-300 ease-in-out px-2"
+                id="btnBuscar"
+              >
+                Buscar
+              </button>
+            </div>
+            <div
+              class="cursor-pointer bg-white rounded-full w-10 h-10 uppercase font-bold text-sm p-2 hover:opacity-90 buscadorHeader"
+              id="btnFilterHeader"
+            >
+              <img
+                class="imgFilterIcon"
+                src="assets/iconFilter.png"
+                class="w-full h-full"
+                alt=""
+              />
+            </div>
+          </div>
+          <ul class="flex gap-4 items-center" id="options-desktop">
+            <li
+              class="flex items-center gap-2 cursor-pointer txt-primary uppercase h-10 px-4 bg-white uppercase rounded-full font-bold text-sm hover:opacity-90 absolute right-0"
+            >
+              Cuenta
+              <img class="w-7 h-7" src="assets/iconPeople.png" alt="" />
+            </li>
+          </ul>
+          <button id="btn-menu-toggle-buscador" class="flex hidden">
+            <img src="assets/menu-toggle-white.svg" alt="" srcset="" />
+          </button>
+
+          <!-- BUSCADOR MODAL MOBILE -->
+          <div
+            id="mobileSearch"
+            class="hidden top-0 left-0 w-full h-full flex flex-col bg-white fixed z-50 p-4"
+          >
+            <div
+              class="px-4 mb-12 h-14 flex items-center border-b border-gray-50"
+            >
+              <img
+                alt="close"
+                class="toggle-mobile-search cursor-pointer closeMobileSearch"
+                width="24"
+                height="24"
+                src="assets/iconCloseModal.svg"
+              />
+              <div class="flex-grow text-center text-black">Busca</div>
+            </div>
+            <form
+              class="flex flex-col flex-grow items-center"
+              action="/search/"
+            >
+              <div class="flex flex-col flex-grow gap-6 container">
+                <div
+                  class="flex px-4 xs:py-2.5 rounded-2xl border border-gray-60"
+                >
+                  <img
+                    alt="search"
+                    width="24"
+                    height="24"
+                    src="assets/search-purple.svg"
+                  />
+                  <select
+                    type="text"
+                    placeholder="¿Qué estás buscando?"
+                    class="inputCustom"
+                  >
+                    <option>¿Qué estás buscando?</option>
+                    <option>Mujeres</option>
+                    <option>Hombres</option>
+                    <option>Trans</option>
+                  </select>
+                </div>
+
+                <div
+                  class="flex px-4 xs:py-2.5 mb-2 rounded-2xl border border-gray-60 items-center"
+                >
+                  <img
+                    alt="search"
+                    width="24"
+                    height="24"
+                    src="assets/location-purple.svg"
+                  />
+                  <select
+                    type="text"
+                    name="geo-location-input"
+                    placeholder="¿Ciudad?"
+                    class="inputCustom"
+                  >
+                    <option value="0">¿Donde?</option>
+                    <option value="1">España</option>
+                    <option value="2">Francia</option>
+                    <option value="3">Italia</option>
+                  </select>
+                  <div id="mobileLocationClear" class="hidden">
+                    <div class="bg-gray-40 flex rounded-full items-center">
+                      <img
+                        alt="close"
+                        id="clearMobileSearchLocation"
+                        class="cursor-pointer p-1 w-7 h-7"
+                        width="20"
+                        height="20"
+                        src="assets/iconCloseModal.svg"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div id="geo-results-mobile"></div>
+                <input type="hidden" name="location-id" value="0" />
+
+                <div class="flex flex-wrap justify-center gap-4">
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Escorts en Buenos Aires"
+                  >
+                    Madrid
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Escort Capital Federal"
+                    href="/escorts/capital-federal/"
+                  >
+                    Sevilla
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Escorts Córdoba"
+                    href="/escorts/cordoba/"
+                  >
+                    Bilbao
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Escort en Rosario"
+                    href="/escorts/rosario/"
+                  >
+                    Barcelona
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Escort en Mar del Plata"
+                    href="/escorts/mar-del-plata/"
+                  >
+                    Valencia
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Putas San Miguel de Tucumán"
+                    href="/escorts/san-miguel-de-tucuman/"
+                  >
+                    Zaragoza
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Putas en Salta"
+                    href="/escorts/salta/"
+                  >
+                    Toledo
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Escorts en Santa Fe"
+                    href="/escorts/santa-fe/"
+                  >
+                    Murcia
+                  </a>
+
+                  <a
+                    data-test="primary-cities"
+                    class="px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                    title="Escort Corrientes"
+                    href="/escorts/corrientes/"
+                  >
+                    Girona
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="py-4 px-8 flex justify-between items-center border-t border-gray-50 shadow-[2px_2px_8px_rgba(0,0,0,0.25)] w-full"
+              >
+                <button
+                  id="mobileSearchResetFilter"
+                  type="button"
+                  class="cursor-pointer underline text-black py-4 w-1/2"
+                >
+                  Reset
+                </button>
+                <button
+                  class="rounded-2xl flex items-center justify-center bg-red-200 text-black px-10 py-4 w-1/2"
+                  type="submit"
+                >
+                  <img
+                    alt="search"
+                    width="24"
+                    height="24"
+                    class="mr-2"
+                    src="assets/search-purple.svg"
+                  />
+                  Buscar
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- BUSCADOR MODAL -->
+          <div class="hidden" id="buscadorModal">
+            <div
+              id="desktopSearch"
+              class="bg-white p-4 absolute hidden md:flex items-center justify-center top-20 left-0 right-0 opacity-0 [transition:transform_250ms_ease,opacity_100ms_ease,visibility_0ms_50ms] opacity-100 rounded-xl"
+            >
+              <div class="flex flex-col items-center justify-center">
+                <div class="md:flex items-center justify-center">
+                  <div class="flex flex-col min-w-[28em]">
+                    <form
+                      class="flex rounded-full bg-buscador justify-between w-full"
+                      action="/search/"
+                    >
+                      <select
+                        type="text"
+                        placeholder="¿Qué estás buscando?"
+                        class="inputCustom w-max"
+                      >
+                        <option>¿Qué estás buscando?</option>
+                        <option>Mujeres</option>
+                        <option>Hombres</option>
+                        <option>Trans</option>
+                      </select>
+
+                      <!-- <div
+                        id="locationPrompt"
+                        class="w-28 md:w-36 lg:w-68 text-sm bg-transparent px-6 my-2 font-normal flex items-center justify-center border-l focus:border-l border-gray-60 focus:border-gray-60 hidden"
+                      >
+                        Buenos Aires
+                        <div class="bg-white flex rounded-full ml-4">
+                          <img
+                            alt="close"
+                            id="clearDesktopSearchLocation"
+                            class="cursor-pointer mt-px p-1 w-6 h-6"
+                            width="20"
+                            height="20"
+                            src="assets/iconCloseModal.svg"
+                          />
+                        </div>
+                      </div> -->
+                      <div class="relative flex items-center">
+                        <span
+                          onclick="openSelectLocationModal()"
+                          class="cursor-pointer"
+                          >¿Donde?</span
+                        >
+                        <ul
+                          class="flex flex-col menuSelector hidden absolute top-14 bg-red-300 px-4 py-1 gap-4"
+                        >
+                          <li itemid="0">¿Donde?</li>
+                          <li itemid="1">España</li>
+                          <li itemid="2">Francia</li>
+                          <li itemid="3">Italia</li>
+                        </ul>
+                      </div>
+
+                      <input type="hidden" name="location-id" value="1" />
+                      <input
+                        class="text-black rounded-full px-8 py-4 m-1 hover:opacity-80 bg-red cursor-pointer text-white uppercase font-bold text-sm"
+                        type="submit"
+                        value="Buscar"
+                      />
+                    </form>
+                    <div id="geo-results"></div>
+                  </div>
+
+                  <div
+                    id="btnFilter"
+                    class="ml-4 flex bg-gray-100 rounded-full py-4 px-5 items-center justify-center cursor-pointer text-black"
+                  >
+                    <img
+                      class="w-5 h-5 mr-2"
+                      src="assets/iconFilter.png"
+                      alt="filters"
+                    />
+                    Filtros
+                  </div>
+                </div>
+
+                <div class="mt-4 max-w-2xl">
+                  <div class="flex flex-wrap justify-center gap-4">
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Escort Buenos Aires"
+                    >
+                      Madrid
+                    </div>
+
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Escort en Capital Federal"
+                    >
+                      Sevilla
+                    </div>
+
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Putas Córdoba"
+                    >
+                      Andorra
+                    </div>
+
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Escort en Rosario"
+                    >
+                      Barcelona
+                    </div>
+
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Escorts en Mar del Plata"
+                    >
+                      Bilbao
+                    </div>
+
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Escorts San Miguel de Tucumán"
+                    >
+                      Granada
+                    </div>
+
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Putas en Salta"
+                    >
+                      Valencia
+                    </div>
+
+                    <div
+                      data-test="primary-cities"
+                      class="cursor-pointer px-4 py-2 bg-gray-40 text-purple-90 rounded-lg hover:opacity-50 shadow-sm hover:shadow-none shadow-neutral-20"
+                      title="Escort Santa Fe"
+                    >
+                      Murcia
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MODAl -->
+    <div
+      class="fixed h-full w-full inset-0 overflow-y-auto hidden"
+      id="modalFilter"
+    >
+      <div
+        class="flex max-h-full items-end justify-center text-center sm:items-center"
+      >
+        <form
+          id="filterForm"
+          action="/search/"
+          class="fixed top-0 bottom-0 md:top-[10%] md:bottom-[10%] inset-0 transform rounded-3xl bg-white text-left shadow-xl transition-all md:max-w-[60%] lg:max-w-[30%] mx-auto h-96"
+        >
+          <header
+            class="bg-white z-40 rounded-t-3xl px-4 md:px-8 pt-8 pb-8 md:pb-4 border-b md:border-0 border-gray-50 flex items-start"
+          >
+            <button
+              id="closeModal"
+              type="button"
+              class="cursor-pointer w-6 h-6"
+            >
+              <img
+                alt="close"
+                width="24"
+                height="24"
+                src="assets/iconCloseModal.svg"
+              />
+            </button>
+            <div class="flex-1 flex flex-col justify-center mr-6">
+              <div class="text-center font-medium">Filtros</div>
+            </div>
+          </header>
+
+          <div
+            class="px-4 md:px-8 overflow-y-auto absolute top-[70px] bottom-[87px] w-full h-max"
+          >
+            <div class="font-medium mb-4 pt-8">Género</div>
+            <div class="flex flex-col md:flex-row md:flex-wrap gap-y-4">
+              <div
+                class="relative flex flex-row-reverse justify-between md:justify-start md:flex-row items-start flex-1 md:flex-[30%]"
+              >
+                <div class="flex h-6 items-center">
+                  <input
+                    id="gender_2"
+                    value="hombre"
+                    name="gender"
+                    type="checkbox"
+                    class="tailwind-input h-6 w-6 rounded border-gray-60"
+                  />
+                </div>
+                <div class="md:ml-3 text-sm leading-6 flex flex-1 md:block">
+                  <label
+                    for="gender_2"
+                    class="cursor-pointer text-gray-900 flex-1"
+                    >Hombre</label
+                  >
+                </div>
+              </div>
+
+              <div
+                class="relative flex flex-row-reverse justify-between md:justify-start md:flex-row items-start flex-1 md:flex-[30%]"
+              >
+                <div class="flex h-6 items-center">
+                  <input
+                    id="gender_1"
+                    value="mujer"
+                    name="gender"
+                    type="checkbox"
+                    class="tailwind-input h-6 w-6 rounded border-gray-60"
+                  />
+                </div>
+                <div class="md:ml-3 text-sm leading-6 flex flex-1 md:block">
+                  <label
+                    for="gender_1"
+                    class="cursor-pointer text-gray-900 flex-1"
+                    >Mujer</label
+                  >
+                </div>
+              </div>
+
+              <div
+                class="relative flex flex-row-reverse justify-between md:justify-start md:flex-row items-start flex-1 md:flex-[30%]"
+              >
+                <div class="flex h-6 items-center">
+                  <input
+                    id="gender_3"
+                    value="travestis"
+                    name="gender"
+                    type="checkbox"
+                    class="tailwind-input h-6 w-6 rounded border-gray-60"
+                  />
+                </div>
+                <div class="md:ml-3 text-sm leading-6 flex flex-1 md:block">
+                  <label
+                    for="gender_3"
+                    class="cursor-pointer text-gray-900 flex-1"
+                    >Trans</label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="py-8">
+              <div class="flex items-center mb-5">
+                <div
+                  class="range-slider-two items-center flex h-max pl-2 gap-4"
+                >
+                  <span
+                    class="font-medium rangeValuesTwo w-min text-nowrap"
+                  ></span>
+                  <input
+                    min="18"
+                    max="99"
+                    value="18"
+                    type="range"
+                    class="bg-red-400"
+                  />
+                  <input
+                    min="18"
+                    max="99"
+                    value="99"
+                    type="range"
+                    class="bg-red-400 input-range-end"
+                  />
+                </div>
+              </div>
+              <div id="age-range-validation-error" class="hidden text-red-700">
+                La edad máxima no puede ser inferior a la edad mínima
+              </div>
+              <div id="age-validation-error" class="text-gray-80">
+                La edad mínima es de 18 años y la máxima de 99.
+              </div>
+            </div>
+            <hr class="text-gray-50" />
+
+            <input type="hidden" name="location" value="buenos-aires" />
+          </div>
+
+          <footer
+            class="fixed bottom-0 inset-x-0 md:absolute z-40 bg-white rounded-none md:rounded-b-3xl border-t border-gray-50 shadow-lg md:shadow-none"
+          >
+            <div class="flex py-4 px-4 md:px-8 justify-between">
+              <button
+                type="button"
+                class="cursor-pointer underline tailwind-input py-4 w-1/2 md:w-auto md:min-w-40"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                class="btn-primary rounded-2xl py-4 w-1/2 md:w-auto md:px-10 md:min-w-40"
+              >
+                Buscar
+              </button>
+            </div>
+          </footer>
+        </form>
+      </div>
+    </div>
+    <!-- MODAL -->
+
+    <main class="container mx-auto gap-8 flex flex-col py-12 p-4">
+      <div class="flex items-center gap-2">
+        <img src="assets/iconNavigate.png" alt="" srcset="" />
+        <img src="assets/iconArrowRight.png" alt="" />
+        <span class="font-semibold"><a href="">España</a></span>
+        <img src="assets/iconArrowRight.png" alt="" />
+        <span class="font-semibold"><a href="">Madrid...</a></span>
+      </div>
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <div
+          class="flex flex-col md:flex-row bg-card-escort rounded-lg cursor-pointer"
+          onclick="window.location.href='perfil.php'"
+        >
+          <div class="grid grid-cols-2 md:grid-cols-1 gap-2">
+            <img class="w-full" src="assets/escort/num1.png" alt="" />
+            <img
+              id="escortUnoImagenExtra"
+              class="w-full hidden"
+              src="assets/escort/num1.png"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col justify-between py-8 px-4 gap-4">
+            <div class="flex flex-col gap-4 justify-start">
+              <span
+                class="txt-card-escort font-semibold cursor-pointer hover:underline"
+                >Soy Silvina, 23 años y estoy disponible!</span
+              >
+              <div
+                class="w-14 bg-gray-500 descriptionCardEscort"
+                style="height: 0.3px"
+              ></div>
+              <p class="descriptionCardEscort">
+                Ofrezco servicios completos, voy a hoteles y domicilio
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img class="icons" src="assets/iconUbication.png" alt="" />
+              <span class="font-semibold">Madrid</span>
+            </div>
+            <div class="flex gap-4 flex-wrap w-full">
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border min-w-max"
+              >
+                <img class="icons" src="assets/iconWoman.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >Mujer</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border min-w-max"
+              >
+                <img class="icons" src="assets/iconBirthdat.png" alt="" />
+                <span class="text-nowrap text-xs sm:text-sm">23 años</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border min-w-max"
+              >
+                <img src="assets/iconPais.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >España</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex bg-card-escort rounded-lg">
+          <img
+            class="escortComunImg h-min"
+            src="assets/escort/num2.png"
+            alt=""
+          />
+          <div class="flex flex-col justify-between py-2 px-4 md:py-8 md:px-4">
+            <div class="flex flex-col gap-4 justify-start">
+              <span class="txt-card-escort font-semibold"
+                >Cami morocha hermosa</span
+              >
+              <div
+                class="w-14 bg-gray-500 descriptionCardEscort"
+                style="height: 0.3px"
+              ></div>
+              <p class="descriptionCardEscort">
+                Ofrezco servicios completos, voy a hoteles y domicilio
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img class="icons" src="assets/iconUbication.png" alt="" />
+              <span class="font-semibold">Madrid</span>
+            </div>
+            <div class="flex gap-1 sm:gap-4 flex-wrap w-full">
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconWoman.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >Mujer</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img
+                  class="icons"
+                  src="assets/iconBirthdat.png"
+                  alt=""
+                /><span class="text-nowrap text-xs sm:text-sm">23 años</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconPais.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >España</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex bg-card-escort rounded-lg">
+          <img
+            class="escortComunImg h-min"
+            src="assets/escort/num3.png"
+            alt=""
+          />
+          <div
+            class="flex flex-col justify-between px-4 py-2 px-4 md:py-8 md:px-4"
+          >
+            <div class="flex flex-col gap-4 justify-start">
+              <span class="txt-card-escort font-semibold"
+                >Cami morocha hermosa</span
+              >
+              <div
+                class="w-14 bg-gray-500 descriptionCardEscort"
+                style="height: 0.3px"
+              ></div>
+              <p class="descriptionCardEscort">
+                Ofrezco servicios completos, voy a hoteles y domicilio
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img class="icons" src="assets/iconUbication.png" alt="" />
+              <span class="font-semibold">Madrid</span>
+            </div>
+            <div class="flex gap-1 sm:gap-4 flex-wrap w-full">
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconWoman.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >Mujer</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img
+                  class="icons"
+                  src="assets/iconBirthdat.png"
+                  alt=""
+                /><span class="text-nowrap text-xs sm:text-sm">23 años</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconPais.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >España</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex bg-card-escort rounded-lg">
+          <img
+            class="escortComunImg h-min"
+            src="assets/escort/num4.png"
+            alt=""
+          />
+          <div
+            class="flex flex-col justify-between px-4 py-2 px-4 md:py-8 md:px-4"
+          >
+            <div class="flex flex-col gap-4 justify-start">
+              <span class="txt-card-escort font-semibold"
+                >Cami morocha hermosa</span
+              >
+              <div
+                class="w-14 bg-gray-500 descriptionCardEscort"
+                style="height: 0.3px"
+              ></div>
+              <p class="descriptionCardEscort">
+                Ofrezco servicios completos, voy a hoteles y domicilio
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img class="icons" src="assets/iconUbication.png" alt="" />
+              <span class="font-semibold">Madrid</span>
+            </div>
+            <div class="flex gap-1 sm:gap-4 flex-wrap w-full">
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconWoman.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >Mujer</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img
+                  class="icons"
+                  src="assets/iconBirthdat.png"
+                  alt=""
+                /><span class="text-nowrap text-xs sm:text-sm">23 años</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconPais.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >España</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex bg-card-escort rounded-lg">
+          <img
+            class="escortComunImg h-min"
+            src="assets/escort/num5.png"
+            alt=""
+          />
+          <div
+            class="flex flex-col justify-between px-4 py-2 px-4 md:py-8 md:px-4"
+          >
+            <div class="flex flex-col gap-4 justify-start">
+              <span class="txt-card-escort font-semibold"
+                >Cami morocha hermosa</span
+              >
+              <div
+                class="w-14 bg-gray-500 descriptionCardEscort"
+                style="height: 0.3px"
+              ></div>
+              <p class="descriptionCardEscort">
+                Ofrezco servicios completos, voy a hoteles y domicilio
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img class="icons" src="assets/iconUbication.png" alt="" />
+              <span class="font-semibold">Madrid</span>
+            </div>
+            <div class="flex gap-1 sm:gap-4 flex-wrap w-full">
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconWoman.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >Mujer</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img
+                  class="icons"
+                  src="assets/iconBirthdat.png"
+                  alt=""
+                /><span class="text-nowrap text-xs sm:text-sm">23 años</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconPais.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >España</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex bg-card-escort rounded-lg">
+          <img
+            class="escortComunImg h-min"
+            src="assets/escort/num6.png"
+            alt=""
+          />
+          <div
+            class="flex flex-col justify-between px-4 py-2 px-4 md:py-8 md:px-4"
+          >
+            <div class="flex flex-col gap-4 justify-start">
+              <span class="txt-card-escort font-semibold"
+                >Cami morocha hermosa</span
+              >
+              <div
+                class="w-14 bg-gray-500 descriptionCardEscort"
+                style="height: 0.3px"
+              ></div>
+              <p class="descriptionCardEscort">
+                Ofrezco servicios completos, voy a hoteles y domicilio
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <img class="icons" src="assets/iconUbication.png" alt="" />
+              <span class="font-semibold">Madrid</span>
+            </div>
+            <div class="flex gap-1 sm:gap-4 flex-wrap w-full">
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconWoman.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >Mujer</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img
+                  class="icons"
+                  src="assets/iconBirthdat.png"
+                  alt=""
+                /><span class="text-nowrap text-xs sm:text-sm">23 años</span>
+              </div>
+              <div
+                class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border"
+              >
+                <img class="icons" src="assets/iconPais.png" alt="" /><span
+                  class="text-nowrap text-xs sm:text-sm"
+                  >España</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-between gap-4 w-full px-2 md:w-2/4 mx-auto"
+      >
+        <div class="flex items-center gap-2 cursor-pointer" id="btnPre">
+          <img id="arrowPre" src="assets/iconArrow.png" alt="" />
+          <span class="font-semibold">Anterior</span>
+        </div>
+        <ul class="flex items-center gap-4">
+          <li
+            class="font-semibold cursor-pointer activePagination hover:border-b hover:border-black border-b border-transparent"
+          >
+            1
+          </li>
+          <li
+            class="font-semibold cursor-pointer hover:border-b hover:border-black border-b border-transparent"
+          >
+            2
+          </li>
+          <li
+            class="font-semibold cursor-pointer hover:border-b hover:border-black border-b border-transparent"
+          >
+            3
+          </li>
+          <li
+            class="font-semibold cursor-pointer hover:border-b hover:border-black border-b border-transparent"
+          >
+            4
+          </li>
+          <li
+            class="font-semibold cursor-pointer hover:border-b hover:border-black border-b border-transparent"
+          >
+            5
+          </li>
+        </ul>
+        <div class="flex items-center gap-2 cursor-pointer" id="btnSig">
+          <span class="font-semibold">Siguiente</span>
+          <img id="arrowSig" src="assets/iconArrowRight.png" alt="" />
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-[#152129] text-white p-8 flex flex-col gap-12 relative bottom-0 w-full"
+    >
+      <div>
+        <div class="flex flex-col gap-8 max-w-7xl mx-auto px-10">
+          <div
+            class="flex flex-col lg:flex-row justify-between gap-12 py-8 border-b border-b-gray-600"
+          >
+            <div class="flex flex-col gap-8">
+              <div class="flex items-center gap-4">
+                <img class="h-20" src="assets/iconBannerMain.png" alt="" />
+                <h1 class="font-bold text-4xl text-white">
+                  Uber<strong class="text-4xl font-bold txt-resaltado"
+                    >Sex</strong
+                  >
+                </h1>
+              </div>
+            </div>
+            <div class="flex">
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 lg:py-0 w-full"
+              >
+                <ul class="flex flex-col gap-2">
+                  <li class="text-sm sm:text-base">
+                    <a
+                      href=""
+                      class="hover:border-b hover:border-white border-b border-transparent"
+                      >Quienes Somos</a
+                    >
+                  </li>
+                  <li class="text-sm sm:text-base">
+                    <a
+                      href=""
+                      class="hover:border-b hover:border-white border-b border-transparent"
+                      >Preguntas Frecuentes</a
+                    >
+                  </li>
+                  <li class="text-sm sm:text-base">
+                    <a
+                      href=""
+                      class="hover:border-b hover:border-white border-b border-transparent"
+                      >Contactanos</a
+                    >
+                  </li>
+                </ul>
+                <ul class="flex flex-col gap-2">
+                  <li class="text-sm sm:text-base">
+                    <a
+                      href=""
+                      class="hover:border-b hover:border-white border-b border-transparent"
+                      >Se parte de nuestros Scorts</a
+                    >
+                  </li>
+                  <li class="text-sm sm:text-base">
+                    <a
+                      href=""
+                      class="hover:border-b hover:border-white border-b border-transparent"
+                      >Términos & Condiciones</a
+                    >
+                  </li>
+                  <li class="text-sm sm:text-base">
+                    <a
+                      href=""
+                      class="hover:border-b hover:border-white border-b border-transparent"
+                      >Politicas de Privacidad</a
+                    >
+                  </li>
+                </ul>
+                <ul
+                  class="flex flex-col justify-between gap-4 col-span-2 sm:col-span-1"
+                >
+                  <li class="text-nowrap text-sm sm:text-base">
+                    Eres Scorts? Descarga nuestra app
+                  </li>
+                  <button
+                    class="flex w-full md:w-full items-center justify-between rounded-lg bg-violet p-2 text-sm text-white shadow-sm"
+                  >
+                    <div class="flex w-full gap-4 items-center font-semibold">
+                      <img src="assets/iconAndroid.png" alt="" srcset="" />
+                      Android APP
+                    </div>
+                    <div class="w-max w-full px-2">
+                      <img
+                        class="w-full"
+                        src="assets/arrow-top-right-white.svg"
+                        alt=""
+                        srcset=""
+                      />
+                    </div>
+                  </button>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-2 flex-col justify-between lg:flex-row">
+            <span class="text-xs text-white"
+              >© Copyright 2025 -Todos los derechos reservados</span
+            >
+            <span class="text-xs text-white"
+              >Seleccion VIP de scorts 100% verificadas y seguras presente en
+              más de 15 paises</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="rangeInput.js"></script>
+    <script src="logica/controllerModalBuscador.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+:root {
+  --primary-banner-color: #de1e14;
+  --text-gray: #666666;
+  --bg-violet: #5d40dd;
+  --bg-card-escort: #fcf0ee;
+  --text-card-escort: #fe3b3b;
+  --bg-card-contrato: #db2310;
+  --bg-buscador: #f4b0ae;
+  --bg-red: var(--primary-banner-color);
+  --bg-web: #f8f8f8;
+  --bg-card-tarifas: #f8e6e6;
+  --bg-card-wts: #37b44a;
+  --text-red: #e4003b;
+  --bg-violet-light: #efecff;
+  --text-gray: #333333;
+}
+p,span,h1,h2,h3,h4,h5,h6{
+  color: var(--text-gray);
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 1px;
+  width: 100%;
+  cursor: pointer;
+}
+.bg-violetLight {
+  background-color: var(--bg-violet-light) !important;
+}
+.txtRed {
+  color: var(--text-red) !important;
+}
+.bgPuntitos {
+  border: 1px dashed #000000;
+  height: 1px !important;
+  width: 100%;
+  vertical-align: sub;
+}
+.buscadorHeader{
+  width: max-content!important;
+}
+button:hover{
+  opacity: 0.90!important;
+  transition: all 0.2s ease-in-out;
+  transform: scale(0.99)!important;
+}
+#buscador {
+  width: 475px;
+  transition: all 0.2s ease-in-out;
+}
+#ciudadSelect{
+  transition: all 0.2s ease-in-out;
+}
+.activePagination{
+  border-bottom: 1px solid #000000!important;
+}
+.buscadorActive{
+  width: 620px!important;
+}
+
+#estasBuscando {
+  width: 220px;
+}
+.btnBuscarBuscador {
+  width: 220px;
+}
+.bg-card-wts {
+  background-color: var(--bg-card-wts) !important;
+}
+.bg-cardContrato {
+  background-color: var(--bg-card-contrato) !important;
+}
+.bg-whiteLight {
+  background-color: var(--bg-web);
+}
+.bg-Tarifas {
+  background-color: var(--bg-card-tarifas) !important;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+option{
+  cursor: pointer;
+}
+#modalFilter {
+  z-index: 99999;
+  background: #47020249;
+}
+.bg-red {
+  background-color: var(--bg-red);
+}
+.containerMainRegister{
+  min-height: calc(100vh - 80px)!important;
+}
+.text-purple-100 {
+  color: #f1f1f1 !important;
+}
+.text-purple-100::placeholder {
+  color: var(--text-card-escort) !important;
+  font-weight: 500;
+}
+.text-purple-90 {
+  color: var(--text-card-escort);
+  font-weight: 500;
+}
+.bg-white-90 {
+  background-color: #fafafa;
+}
+.bg-buscador,
+.bg-sidePerfil {
+  background-color: var(--bg-buscador);
+}
+.bg-primary-banner {
+  background-color: var(--primary-banner-color);
+}
+.txt-primary {
+  color: var(--primary-banner-color);
+}
+.text-gray {
+  color: var(--text-gray);
+}
+.bg-violet {
+  background-color: var(--bg-violet);
+}
+.bg-violet:hover {
+  background-color: #5d40ddd3;
+}
+.bg-menu-responsive {
+  --tw-bg-opacity: 1;
+  background-color: rgb(222 30 20 / 56%);
+}
+.bg-card-escort {
+  background-color: var(--bg-card-escort);
+}
+.txt-card-escort {
+  color: var(--text-card-escort);
+}
+select {
+  text-overflow: "";
+  outline: none;
+  border: none !important;
+  outline-style: none;
+  cursor: pointer;
+  outline: solid transparent;
+  scroll-behavior: smooth !important;
+}
+.z-index-sup {
+  z-index: 99999 !important;
+}
+.slideDown {
+  animation: slideDown 0.6s ease-in-out;
+}
+
+.slideUp {
+  animation: slideUp 0.6s ease-in-out;
+}
+
+.txt-resaltado {
+  color: #ffff00;
+}
+
+.iconBannerMain {
+  width: 73px;
+  height: 98px;
+}
+
+.arrowAnimation {
+  transform: translateX(-10px);
+  transition: transform 0.3s ease-in-out;
+}
+.arrowAnimationRight {
+  transform: translateX(10px);
+  transition: transform 0.3s ease-in-out;
+}
+
+#arrowPre,
+#arrowSig {
+  transition: 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes searchToBack {
+  100% {
+    width: 620px;
+  }
+  0% {
+    width: 475px;
+  }
+}
+
+.inputCustomCustom {
+  border: none !important;
+  outline: none !important;
+  color: #152129;
+  font-weight: 500 !important;
+  background-color: var(--bg-buscador);
+}
+.inputCustom {
+  position: relative;
+  display: block;
+  font-family: "Wotfard", sans-serif;
+  font-size: 16px;
+  letter-spacing: normal;
+  font-weight: 400;
+  text-transform: none;
+  color: #152129;
+  width: 100%;
+  height: 56px;
+  line-height: 52px;
+  background-color: transparent;
+  border: 2px solid #cfdbe6;
+  border-radius: 8px;
+  box-shadow: 0;
+  outline: 0;
+  outline-color: transparent;
+  outline-style: none;
+  resize: none;
+  margin: 0;
+  padding: 0 16px;
+  text-rendering: optimizeLegibility;
+}
+
+.m-auto
+{
+  margin: auto;
+}
+
+
