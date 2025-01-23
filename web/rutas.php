@@ -7,9 +7,34 @@ use Phroute\Phroute\Exception\HttpMethodNotAllowedException;
 include 'logica/panel-info.php';
 include 'logica/BDcon.php';
 include 'logica/profesionalController.php';
-
+include('php_lib/login.lib.php');
 
 $collector = new RouteCollector();
+
+$collector->get('/login', function() {
+    $link = (new BDcon())->conect();
+	$cedula=$_POST['email'];
+	$pass=$_POST['password'];
+	$query = "SELECT * FROM users WHERE email = '$cedula' AND otp = '$pass'";
+             $result = mysqli_query($link,$query);
+             $numero=1;
+             while ($row = mysqli_fetch_assoc($result)) {
+                    $hash = $row["password"];
+                    $user = $row;
+              }
+
+    // verificamos el usuario y contraseña mandados
+    if (login($_POST['email'], $_POST['password'])) {
+        // Acciones a realizar cuando un usuario se identifica
+        header('Content-Type: application/json');
+        return json_encode(['success' => true, 'hash' => $hash, 'user' => $user]); // Respuesta JSON de éxito
+    } else {
+        // Respuesta JSON de error
+        header('Content-Type: application/json');
+        return json_encode(['success' => false]); // Respuesta JSON de fallo
+    }
+    return json_encode(['success' => false]);
+});
 
 $collector->get('/profesionales', function() {
     $link = (new BDcon())->conect();
