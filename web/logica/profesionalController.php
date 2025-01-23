@@ -276,7 +276,7 @@ class ProfesionalController
     {
         $query = "SELECT nombre,telefono,fecha,cabello,piel,apellido,fotoPrincipal,fotos,complexion,sexo,medida_pechos,altura,peso,descripcion,objetivo,
         servicios,fotos.idfotos,fotos.ruta,provincia.name as pais, tags.name as ciudad
-        FROM megacobc_ubercx.profesionales 
+        FROM profesionales 
         inner join fotos on profesionales.id = fotos.userId 
         inner join provincia on profesionales.pais = provincia.id
         inner join tags on profesionales.ciudad = tags.id
