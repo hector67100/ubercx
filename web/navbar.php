@@ -27,7 +27,7 @@ $root = '../';
           <ul class="flex gap-4 items-center" id="options-desktop">
             <li
               class="flex group items-center gap-2 cursor-pointer txt-primary uppercase h-10 px-4 bg-white uppercase rounded-full font-bold text-sm hover:opacity-90 right-0"
-              onclick="window.location.href = '<?php echo isset($_SESSION['profesional']) && !empty($_SESSION['profesional']) ? 'index.php?h=': $root.'login.php'; ?>'"
+              onclick="window.location.href = '<?php echo isset($_SESSION['profesional']) && !empty($_SESSION['profesional']) ? $root.'index.php?h=': $root.'login.php'; ?>'"
             >
               <?php echo isset($_SESSION["profesional"]) && !empty($_SESSION["profesional"]) ? substr($_SESSION["profesional"]["email"], 0, 6) : 'Cuenta'; ?>
               <img class="w-7 h-7" src="<?php echo $root?>assets/iconPeople.png" alt="" />
