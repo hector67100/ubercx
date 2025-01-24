@@ -76,7 +76,7 @@ li.group:hover .submenu {
               <img class="w-7 h-7" src="./assets/iconPeople.png" alt="" />
               
               <!-- Submenú de Cerrar Sesión -->
-              <?php if (isset($cedula) && !empty($cedula)): ?>
+              <?php if (isset($_SESSION["profesional"]) && !empty($_SESSION["profesional"])): ?>
                 <div class="submenu absolute top-full left-0 mt-2 hidden bg-white shadow-lg rounded-lg p-2" style="margin-top: 1px;">
                   <?php  if(isset($_SESSION["profesional"]) && !empty($_SESSION["profesional"])):?>
                   <a href="pages/profesional-perfil.php?pr=<?php echo $_SESSION["profesional"]["id"];?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Mi perfil</a>
