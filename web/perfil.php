@@ -564,7 +564,7 @@ li.group:hover .submenu {
             ?>
               <img
                 class="h-full rounded-3xl object-cover morePics cursor-pointer"
-                src="<?php echo $foto["ruta"] ?>"
+                src="<?php echo str_replace("../","",$foto["ruta"]) ?>"
                 alt=""
                 onclick="openGallery(<?php echo $i ?>)"
               />
