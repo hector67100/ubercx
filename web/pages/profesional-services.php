@@ -506,7 +506,6 @@ $(document).ready(function() {
 
 $("#agregar").on("click", function(e){
   e.preventDefault();
-  console.log($("#servicios").val());
   if(serviciosActivos.find(x => x.id == $("#servicios").val()))
   {
     alert("Ya esta el servicio agregado");
@@ -545,6 +544,7 @@ $("#agregar").on("click", function(e){
                       </div>
     `;
     $("#input-container-service").append(stringServicio);
+    $("#serviciosPrecio").val(0);
   }
 });
 
