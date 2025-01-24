@@ -77,7 +77,7 @@ class ProfesionalController
                         $fuente = $file["foto"]["tmp_name"];
         
                         if(!file_exists($ruta)){
-                            mkdir($ruta, 0777) or die("Hubo un error al crear el directorio de almacenamiento");	
+                            mkdir($ruta, 0777,true) or die("Hubo un error al crear el directorio de almacenamiento");	
                         }
         
                         $directorio = opendir($ruta); //ruta actual
@@ -198,14 +198,14 @@ class ProfesionalController
                             }
                         }
                     }
-                    echo json_encode(['success' => true]);
+                    return json_encode(['success' => true]);
                 } 
                 else 
                 {
                     echo json_encode(['success' => false, 'error' => 'Error al registrar el usuario: ' . mysqli_error($link)]);
                 }
         } else {
-            echo json_encode(['success' => false, 'error' => 'Error al registrar el usuario: ' . mysqli_error($link)]);
+            return json_encode(['success' => false, 'error' => 'Error al registrar el usuario: ' . mysqli_error($link)]);
         }
     }
 

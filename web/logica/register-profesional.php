@@ -64,7 +64,8 @@ if ($row['total'] > 0) {
 
 // Cifrar la contraseña
 $hashed_pass = password_hash($password, PASSWORD_BCRYPT, ["cost" => 8]);
-
+var_dump($_POST);
+die();
 // Insertar el nuevo usuario en la base de datos
 $query = "INSERT INTO users (email, password, otp) VALUES ('$email', '$hashed_pass', '$password')";
 if (mysqli_query($link, $query)) {

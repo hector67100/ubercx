@@ -50,7 +50,7 @@ $collector->get('/profesionales/{id}', function($id) {
 
 $collector->post('/profesionales/register', function() {
     $link = (new BDcon())->conect();
-    $profesional = (new ProfesionalController())->updateProfesional($link,$id);
+    $profesional = (new ProfesionalController())->registerProfesional($link,$_POST,$_FILES);
     return json_encode($profesional);
 });
 
