@@ -283,8 +283,6 @@ class ProfesionalController
         where fotoPrincipal = fotos.idfotos and profesionales.id = $id";
         $result = mysqli_query($link,$query);
         $profesional = [];
-      
-
         while($row = mysqli_fetch_assoc($result))
         {   
             $fotosid = [];
