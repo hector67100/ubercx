@@ -266,7 +266,7 @@ $categorias = (new PanelInfo())->getCategories($link);
   </head>
   <body>
     <?php
-        include 'components/navbar.php';
+        include '../navbar.php';
     ?>
      <main class="relative mx-auto w-full">
       <div

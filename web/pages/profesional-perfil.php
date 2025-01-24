@@ -285,7 +285,7 @@ session_start();
   </head>
   <body>
     <?php
-        include 'components/navbar.php';
+        include '../navbar.php';
     ?>
     <div class="container m-auto">
         <div class="flex">
