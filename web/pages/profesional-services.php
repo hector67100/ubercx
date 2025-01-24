@@ -486,7 +486,7 @@ $(document).ready(function() {
                         </div>
                       </div>
     `;
-    $("#input-container").append(stringServicio);
+    $("#input-container-service").append(stringServicio);
      });
       }
     }
@@ -544,7 +544,7 @@ $("#agregar").on("click", function(e){
                         </div>
                       </div>
     `;
-    $("#input-container").append(stringServicio);
+    $("#input-container-service").append(stringServicio);
   }
 });
 
