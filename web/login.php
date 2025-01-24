@@ -503,8 +503,13 @@ document.getElementById('kt_sign_in_submit').addEventListener('click', function(
                 backdrop: true,  // Añade un fondo oscuro
                 heightAuto: false  // Evita que ajuste automáticamente la altura
             }).then(() => {
+              if(data.prof){
+                window.location.href = 'pages/profesional-perfil.php?'+'pr='+data.id;
+              }
+              else
+              {
                 window.location.href = 'index.php?'+'h='+data.hash;
-         
+              }
             });
         } else {
             // Muestra el mensaje de error

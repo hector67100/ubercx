@@ -2,6 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // ¿Nos mandan datos por el formulario?
     include('php_lib/config.ini.php'); // incluimos configuración
     include('php_lib/login.lib.php'); // incluimos las funciones
+    include('logica/profesionalController.php');
 
 	$link =  mysqli_connect(SERVIDOR_MYSQL, USUARIO_MYSQL, PASSWORD_MYSQL);
     if (!$link) {
@@ -26,7 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // ¿Nos mandan datos por el formula
     if (login($_POST['email'], $_POST['password'])) {
         // Acciones a realizar cuando un usuario se identifica
         header('Content-Type: application/json');
-        echo json_encode(['success' => true, 'hash' => $hash]); // Respuesta JSON de éxito
+        $prof = (new ProfesionalController())->getProfesionalesEmail($link,$_POST['email']);
+        $profesional = false;
+        $id = null;
+        if(isset($prof)){
+            $profesional = true;
+            $id = $prof['id'];
+        }
+        echo json_encode(['success' => true, 'hash' => $hash,'prof' => $profesional,'id'=> $id]); // Respuesta JSON de éxito
         exit;
     } else {
         // Respuesta JSON de error
