@@ -1,4 +1,5 @@
 <?php
+session_start(); // Iniciamos la sesión
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // ¿Nos mandan datos por el formulario?
     include('php_lib/config.ini.php'); // incluimos configuración
     include('php_lib/login.lib.php'); // incluimos las funciones
@@ -34,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // ¿Nos mandan datos por el formula
             $profesional = true;
             $id = $prof['id'];
         }
+        $_SESSION["profesional"] = $prof;
         echo json_encode(['success' => true, 'hash' => $hash,'prof' => $profesional,'id'=> $id]); // Respuesta JSON de éxito
         exit;
     } else {

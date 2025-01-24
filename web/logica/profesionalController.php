@@ -376,7 +376,8 @@ class ProfesionalController
         $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
         $profesionalesId = $id;
         $root = str_replace("logica","",__DIR__);
-        $ruta = $root.'/profesionales/'.$email;
+        $ruta = $root.'profesionales/'.$email;
+        
         if($profile["error"] > 0)
         {
 
@@ -386,13 +387,15 @@ class ProfesionalController
             $archivonombre = $profile["name"];
             $fuente =$profile["tmp_name"];
             $directorio = opendir($ruta); //ruta actual
-            $target_path = str_replace($root,"../",$ruta).'/'.$archivonombre;
+            $target_path = $ruta.'/'.$archivonombre;
+
             if(move_uploaded_file($fuente, $target_path)) 
             {
-                $query1="INSERT INTO fotos (userId, ruta) VALUES ('$profesionalesId','$target_path')";
+                $path=str_replace($root,"../",$target_path);
+                $query1="INSERT INTO fotos (userId, ruta) VALUES ('$profesionalesId','$path')";
                 if (mysqli_query($link, $query1)) 
                 {
-                    $query2="select * from fotos where userId = '$profesionalesId' and ruta = '$target_path'";
+                    $query2="select * from fotos where userId = '$profesionalesId' and ruta = '$path'";
                     $idfoto = mysqli_fetch_assoc(mysqli_query($link, $query2))["idfotos"];
                     if(mysqli_query($link, $query2))
                     {
@@ -433,11 +436,11 @@ class ProfesionalController
                 $fuente = $pictures["tmp_name"];
                 $target_path = $ruta.'/'.$archivonombre;
                 if(move_uploaded_file($fuente, $target_path)) {
-    
-                    $query1="INSERT INTO fotos (userId, ruta) VALUES ('$profesionalesId','$target_path')";
+                    $path=str_replace($root,"../",$target_path);
+                    $query1="INSERT INTO fotos (userId, ruta) VALUES ('$profesionalesId','$path')";
                     if (mysqli_query($link, $query1)) 
                     {
-                        $query2="select * from fotos where userId = '$profesionalesId' and ruta = '$target_path'";
+                        $query2="select * from fotos where userId = '$profesionalesId' and ruta = '$path'";
                         $idfoto = mysqli_fetch_assoc(mysqli_query($link, $query2))["idfotos"];
                         array_push($json, $idfoto);
                         if(mysqli_query($link, $query2))
@@ -470,11 +473,11 @@ class ProfesionalController
                     $fuente = $pictures["tmp_name"][$key];
                     $target_path = $ruta.'/'.$archivonombre;
                     if(move_uploaded_file($fuente, $target_path)) {
-                       
-                        $query1="INSERT INTO fotos (userId, ruta) VALUES ('$profesionalesId','$target_path')";
+                        $path=str_replace($root,"../",$target_path);
+                        $query1="INSERT INTO fotos (userId, ruta) VALUES ('$profesionalesId','$path')";
                         if (mysqli_query($link, $query1)) 
                         {
-                            $query2="select * from fotos where userId = '$profesionalesId' and ruta = '$target_path' limit 1";
+                            $query2="select * from fotos where userId = '$profesionalesId' and ruta = '$path' limit 1";
                             
                             $idfoto = mysqli_fetch_assoc(mysqli_query($link, $query2))["idfotos"];
                             array_push($json, $idfoto);

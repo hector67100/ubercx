@@ -607,7 +607,6 @@ foreach($provincia as $row)
                     let bandera = [pais.codigo,pais.image]
                     banderas.push(bandera);
                   });
-                  console.log(banderas);
               } else {
                   // Si hubo errores, mostrar el mensaje de error
                   alert(data.error); // Muestra el mensaje de error que viene del servidor
@@ -666,8 +665,8 @@ foreach($provincia as $row)
               data = JSON.parse(data);
               if (data.success) {
                   // Si el registro fue exitoso, mostrar mensaje o redirigir
-                  alert('Registro exitoso');
-                  window.location.href = "../login.php"; // Redirige al usuario
+                  alert('Se han actualizado los datos');
+                  window.location.href = '../pages/profesional-perfil.php?'+'pr='+<?php echo $pr?>;
               } else {
                   // Si hubo errores, mostrar el mensaje de error
                   alert(data.error); // Muestra el mensaje de error que viene del servidor
