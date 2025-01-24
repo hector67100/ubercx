@@ -367,6 +367,8 @@ $(document).ready(function() {
     contentType: "application/json; charset=utf-8",
     success: function(response){
      serviciosActivos= JSON.parse(JSON.parse(response).servicios);
+     if(serviciosActivos.length > 0)
+     {
       serviciosActivos.map((serv) => {
         let stringServicio =`
                       <div class="service-container mb-10">
@@ -390,7 +392,8 @@ $(document).ready(function() {
                       </div>
     `;
     $("#input-container").append(stringServicio);
-      });
+     });
+      }
     }
   });
 
