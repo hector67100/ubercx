@@ -70,7 +70,7 @@ li.group:hover .submenu {
         <ul class="flex gap-4 items-center" id="options-desktop">
           <li
               class="flex items-center gap-2 cursor-pointer txt-primary uppercase h-10 px-4 bg-white rounded-full font-bold text-sm hover:opacity-90 relative group"
-              onclick="window.location.href = '<?php echo isset($_SESSION['profesional']) && !empty($_SESSION['profesional']) ? $root.'pages/profesional-perfil.php?pr='.$_SESSION['profesional']['id']: 'login.php'; ?>'"
+              onclick="window.location.href = '<?php echo isset($_SESSION['profesional']) && !empty($_SESSION['profesional']) ?'pages/profesional-perfil.php?pr='.$_SESSION['profesional']['id']: 'login.php'; ?>'"
             >
               <?php echo isset($_SESSION["profesional"]) && !empty($_SESSION["profesional"]) ? substr($_SESSION["profesional"]["email"], 0, 6) : 'Cuenta'; ?>
               <img class="w-7 h-7" src="./assets/iconPeople.png" alt="" />
