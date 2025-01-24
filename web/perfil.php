@@ -832,7 +832,7 @@ li.group:hover .submenu {
                     >
                       <img
                         class="object-contain"
-                        src="<?php echo $foto["ruta"] ?>"
+                        src="<?php echo str_replace("../","",$foto["ruta"]) ?>"
                         alt="Escorts 🇦🇷 Argentina en Palermo: 1127617113 - Muy putita re fogosa Me gusta todo bebé"
                         loading="lazy"
                       />
