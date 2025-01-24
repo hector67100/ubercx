@@ -222,6 +222,28 @@ $categorias = (new PanelInfo())->getCategories($link);
           background-image: url("<?php echo $root;?>/assets/icon-negativo.png");
         }
 
+        #input-container
+        {
+          max-height: 450px;
+          overflow-y: auto;
+          padding: 0 10px;
+          scrollbar-color:#de1e14 #c2d2e400;
+        }
+
+        #input-container::-webkit-scrollbar {
+            width: 20px; 
+        }
+
+        #input-container::-webkit-scrollbar-track {
+          background-color:#de1e14;
+        }
+
+        #input-container::-webkit-scrollbar-thumb {
+          background:rgba(78, 78, 78, 0);
+          border-radius: 25px;
+        }
+
+
         @media (max-width: 768px) {
 
           .telefono
@@ -277,11 +299,6 @@ $categorias = (new PanelInfo())->getCategories($link);
                 ></div>
 
                 <div class="flex-grow text-purple-100 p-6 m-auto w-full">
-                  <form
-                    id="kt_register_form"
-                    action="" method="POST"
-                    class="flex-1 flex flex-col"
-                  >
                     <div id="form-2" class="flex flex-col">
                       <div class="flex mb-16 service-title">
                         <img src="../assets/IconService.png" class="m-auto" />
@@ -289,50 +306,35 @@ $categorias = (new PanelInfo())->getCategories($link);
                         Crear Cuenta Profesional
                         </h3>
                       </div>
-                      <div class="service-container mb-10">
-                        <div class="service-select">
-                          <label for="service" class="subtitle" >Seleccione Servicio</label>
-                          <select name="service" class="general-input" id="serviciosActivos">
-                          </select>
+                      <div id="input-container">
+                        <div id="input-container-service">
                         </div>
-                        <div class="service-precio">
-                          <label for="precio" class="subtitle" >Introduzca su Costo:</label>
-                          <input type="text" name="precio" class="general-input" placeholder="0" id="serviciosActivosPrecio"/>
-                          <p>USD</p>
-                        </div>
-                        <div class="service-button">
-                        <label for="precio" class="subtitle">Quitar 
-                        Servicio</label>
-                          <button class="button-service restar m-auto" id="quitar"></button>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="service-container mb-10">
-                        <div class="service-select">
-                          <label for="service" class="subtitle" >Seleccione Servicio</label>
-                          <select name="service" class="general-input" id="servicios">
-                            <option value="">Seleccione un servicio</option>
-                            <?php
-                            foreach($categorias as $categoria)
-                            {
-                              echo '<option value="'.$categoria["id"].'">'.$categoria["name"].'</option>';
-                            }
-                            ?>
-                          </select>
-                        </div>
-                        <div class="service-precio">
-                          <label for="precio" class="subtitle">Introduzca su Costo:</label>
-                          <input type="text" name="precio" class="general-input" placeholder="0" id="serviciosPrecio" value="0"/>
-                          <p>USD</p>
-                        </div>
-                        <div class="service-button">
-                        <label for="precio" class="subtitle">Agregar 
-                        Servicios</label>
-                          <button class="button-service suma m-auto" id="agregar"></button>
-                          </button>
+                        <div class="service-container mb-10">
+                          <div class="service-select">
+                            <label for="service" class="subtitle" >Seleccione Servicio</label>
+                            <select name="service" class="general-input" id="servicios">
+                              <option value="">Seleccione un servicio</option>
+                              <?php
+                              foreach($categorias as $categoria)
+                              {
+                                echo '<option value="'.$categoria["id"].'">'.$categoria["name"].'</option>';
+                              }
+                              ?>
+                            </select>
+                          </div>
+                          <div class="service-precio">
+                            <label for="precio" class="subtitle">Introduzca su Costo:</label>
+                            <input type="text" name="precio" class="general-input" placeholder="0" id="serviciosPrecio" value="0"/>
+                            <p>USD</p>
+                          </div>
+                          <div class="service-button">
+                          <label for="precio" class="subtitle">Agregar 
+                          Servicios</label>
+                            <button class="button-service suma m-auto" id="agregar"></button>
+                            </button>
+                          </div>
                         </div>
                       </div>
-
                       <button
                         id="kt_register"
                           class="m-auto w-3/4 h-14 rounded-2xl uppercase text-white bg-red disabled:opacity-50 enabled:hover:bg-purple-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-100 shadow-sm font-bold"
@@ -340,7 +342,6 @@ $categorias = (new PanelInfo())->getCategories($link);
                         Guardar Tarifas
                         </button>
                     </div>
-                  </form>
                 </div>
               </div>
             </div>
@@ -350,39 +351,71 @@ $categorias = (new PanelInfo())->getCategories($link);
     </main>
   <script>
 var servicios = [];
+var serviciosActivos = [];
 $(document).ready(function() {
   $.ajax({
     url: '<?php echo $root;?>rutas.php/profesionales/servicios/<?php echo $pr;?>',
     type: 'GET',
     success: function(response){
-      let serviciosProfesional = JSON.parse(response);
-      serviciosProfesional = serviciosProfesional.servicios ? JSON.parse(serviciosProfesional.servicios) : [];
-      if(serviciosProfesional.length > 0)
-      { 
-        serviciosProfesional.map((servicio) => {
-          $('#serviciosActivos').append('<option value="'+servicio.id+'">'+servicio.nombre+'</option>');
-        });
-      }
-      servicios = serviciosProfesional;
-      if(servicios.length > 0)
-      {
-        let precio = servicios.find(x => x.id == $("#serviciosActivos").val()).precio;
-        $('#serviciosActivosPrecio').val(precio);
-      }
+      servicios = JSON.parse(JSON.parse(response).servicios);
     }
   });
-});
 
+  $.ajax({
+    url: '<?php echo $root;?>rutas.php/profesionales/servicios/<?php echo $pr;?>',
+    type: 'get',
+    contentType: "application/json; charset=utf-8",
+    success: function(response){
+     serviciosActivos= JSON.parse(JSON.parse(response).servicios);
+      serviciosActivos.map((serv) => {
+        let stringServicio =`
+                      <div class="service-container mb-10">
+                        <div class="service-select">
+                          <label for="service" class="subtitle" >Seleccione Servicio</label>
+                          <select name="service" class="general-input" id="serviciosActivos">
+                            <option value="${serv.id}" selected>${serv.nombre}</option>
+                          </select>
+                        </div>
+                        <div class="service-precio">
+                          <label for="precio" class="subtitle" >Introduzca su Costo:</label>
+                          <input type="text" name="precio" class="general-input" placeholder="0" id="serviciosActivosPrecio" value="${serv.precio}"/>
+                          <p>USD</p>
+                        </div>
+                        <div class="service-button">
+                        <label for="precio" class="subtitle">Quitar 
+                        Servicio</label>
+                          <button class="button-service restar m-auto" id="quitar""></button>
+                          </button>
+                        </div>
+                      </div>
+    `;
+    $("#input-container").append(stringServicio);
+      });
+    }
+  });
 
-$("#serviciosActivos").on("change", function(){
-  let precio = servicios.find(x => x.id == $("#serviciosActivos").val()).precio;
-  $('#serviciosActivosPrecio').val(precio);
+  $(document).on("click","#quitar", function(){
+    let servicioAQuitar = serviciosActivos.find(x => x.id == $(this).parent().parent().find("#serviciosActivos").val())
+    let index = serviciosActivos.indexOf(servicioAQuitar);
+    if(index > -1)
+    {
+      serviciosActivos.splice(index, 1); 
+    }
+    console.log(serviciosActivos);
+    $(this).parent().parent().remove();
+    });
 });
 
 $("#agregar").on("click", function(e){
   e.preventDefault();
-  if(servicios.find(x => x.id == $("#servicios").val())){
+  console.log($("#servicios").val());
+  if(serviciosActivos.find(x => x.id == $("#servicios").val()))
+  {
     alert("Ya esta el servicio agregado");
+  }
+  else if($("#servicios").val() == "")
+  {
+    alert("Debe elegir un servicio");
   }
   else
   {
@@ -391,29 +424,32 @@ $("#agregar").on("click", function(e){
       nombre: $("#servicios option:selected").text(),
       precio: $("#serviciosPrecio").val()
     }
-    servicios.push(servicio);
-    $('#serviciosActivos').html("");
-    servicios.map((servicio) => {
-      $('#serviciosActivos').append('<option value="'+servicio.id+'">'+servicio.nombre+'</option>');
-    });
-    let precio = servicios.find(x => x.id == $("#serviciosActivos").val()).precio;
-    $('#serviciosActivosPrecio').val(precio);
+    serviciosActivos.push(servicio);
+    let stringServicio =`
+                      <div class="service-container mb-10">
+                        <div class="service-select">
+                          <label for="service" class="subtitle" >Seleccione Servicio</label>
+                          <select name="service" class="general-input" id="serviciosActivos">
+                            <option value="${servicio.id}" selected>${servicio.nombre}</option>
+                          </select>
+                        </div>
+                        <div class="service-precio">
+                          <label for="precio" class="subtitle" >Introduzca su Costo:</label>
+                          <input type="text" name="precio" class="general-input" placeholder="0" id="serviciosActivosPrecio" value="${servicio.precio}"/>
+                          <p>USD</p>
+                        </div>
+                        <div class="service-button">
+                        <label for="precio" class="subtitle">Quitar 
+                        Servicio</label>
+                          <button class="button-service restar m-auto" id="quitar""></button>
+                          </button>
+                        </div>
+                      </div>
+    `;
+    $("#input-container").append(stringServicio);
   }
 });
 
-$("#quitar").on("click", function(e){
-  e.preventDefault();
-  let servicioAQuitar = servicios.find(x => x.id == $("#serviciosActivos").val())
-  let index = servicios.indexOf(servicioAQuitar);
-  if(index > -1)
-  {
-    servicios.splice(index, 1); 
-  }
-  $('#serviciosActivos').html("");
-    servicios.map((servicio) => {
-      $('#serviciosActivos').append('<option value="'+servicio.id+'">'+servicio.nombre+'</option>');
-  });
-});
 
 $("#kt_register").on("click", function(e){
   e.preventDefault();
@@ -421,7 +457,7 @@ $("#kt_register").on("click", function(e){
     url: '<?php echo $root;?>rutas.php/profesionales/servicios/update/<?php echo $pr;?>',
     type: 'POST',
     contentType: "application/json; charset=utf-8",
-    data: JSON.stringify(servicios),
+    data: JSON.stringify(serviciosActivos),
     success: function(response){
       alert("Servicios actualizados correctamente");
     }

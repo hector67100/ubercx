@@ -703,6 +703,7 @@ li.group:hover .submenu {
             </div>
             <div class="flex flex-wrap lg:flex-col gap-8 mt-12">
               <?php
+              if(isset($profesionales['servicios']) && !empty($profesionales['servicios'])):
                 foreach($profesionales['servicios'] as $servicio)
                 {
               ?>
@@ -722,6 +723,9 @@ li.group:hover .submenu {
               </div>
               <?php
                 }
+              else:
+                echo '<p>No hay servicios disponibles</p>';
+              endif
               ?>
             </div>
           </div>

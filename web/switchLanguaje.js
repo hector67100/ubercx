@@ -17,7 +17,7 @@ btnLangEU.addEventListener("click", () => {
   if(lang === "register.html"){
     return btnLang.children[0].src = "../assets/languajes/eeuu.svg";
   }
-  btnLang.children[0].src = "./assets/languajes/eeuu.svg";
+  btnLang.children[0].src = "../assets/languajes/eeuu.svg";
 });
 btnLangFR.addEventListener("click", () => {
   if (lang === "login.html") {
@@ -26,7 +26,7 @@ btnLangFR.addEventListener("click", () => {
   if(lang === "register.html"){
     return btnLang.children[0].src = "../assets/languajes/france.svg";
   }
-  btnLang.children[0].src = "./assets/languajes/france.svg";
+  btnLang.children[0].src = "../assets/languajes/france.svg";
 });
 btnLangES.addEventListener("click", () => {
   if (lang === "login.html") {
@@ -35,5 +35,5 @@ btnLangES.addEventListener("click", () => {
   if(lang === "register.html"){
     return btnLang.children[0].src = "../assets/languajes/spain.svg";
   }
-  btnLang.children[0].src = "./assets/languajes/spain.svg";
+  btnLang.children[0].src = "../assets/languajes/spain.svg";
 });
