@@ -3,7 +3,7 @@ $root = "../";
 include_once('../php_lib/config.ini.php');
 include '../logica/panel-info.php';
 include '../logica/profesionalController.php';
-
+session_start();
 $link = mysqli_connect(SERVIDOR_MYSQL, USUARIO_MYSQL, PASSWORD_MYSQL);
 if (!$link) {
     echo json_encode(['success' => false, 'error' => 'Error al conectar al servidor mysql']);
