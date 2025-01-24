@@ -5,6 +5,8 @@ include('logica/profesionalController.php');
     
 $dipr=$_REQUEST['pr'];      
 $hash=$_REQUEST['h'];
+$sex=$_REQUEST['sex'];
+
 session_start();   
       $link =  mysqli_connect(SERVIDOR_MYSQL, USUARIO_MYSQL, PASSWORD_MYSQL);
     if (!$link) {
@@ -77,6 +79,27 @@ li.group:hover .submenu {
 /* Asegura que el submenú se quede visible cuando el mouse está sobre el li o el submenú */
 li.group:hover .submenu {
   display: block;
+}
+
+.imagenCardEscort
+{
+  width: 40%;
+}
+
+.escortComunImg
+{
+  width: 100%;
+  border-radius: 13px;
+  height: 100%;
+}
+
+@media (max-width: 1024px) { 
+
+  .imagenCardEscort
+  {
+    display:flex;
+    width: 100%;
+  }
 }
    </style>
   </head>
@@ -774,9 +797,7 @@ li.group:hover .submenu {
       </div>
       <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
           <?php
-        $profesionales = (new ProfesionalController())->getProfesionalByCiudad($link,$dipr);
-        $query2 = "SELECT * FROM profesionales inner join fotos on profesionales.id = fotos.userId where fotoPrincipal = fotos.idfotos and ciudad = '$dipr'";
-        $result2 = mysqli_query($link,$query2);
+        $profesionales = (new ProfesionalController())->getProfesionalByCiudad($link,$dipr,$sex);
         // while ($row2 = mysqli_fetch_assoc($result2)) {
         foreach($profesionales as $row2){
                 $idcliente = $row2['id'];
@@ -822,7 +843,7 @@ li.group:hover .submenu {
           class="flex flex-col md:flex-row bg-card-escort rounded-lg cursor-pointer"
           onclick="redirigir('.$idcliente.')"
         >
-          <div class="grid grid-cols-2 md:grid-cols-1 gap-2">
+          <div class="grid grid-cols-2 md:grid-cols-1 gap-2 imagenCardEscort lg:w-1/2 lg:flex">
             <img class="escortComunImg h-min" src="' . $ruta . '" alt="" />
             
           </div>

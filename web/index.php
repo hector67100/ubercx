@@ -273,6 +273,7 @@ li.group:hover .submenu {
               type="text"
               placeholder="¿Qué estás buscando?"
               class="inputCustom"
+              id="estasBuscandoMobile"
             >
               <option data-translate>¿Qué estás buscando?</option>
               <?php
@@ -549,12 +550,12 @@ li.group:hover .submenu {
     <script src="index.js"></script>
     
    <script>
-        function redirigir(idpr) {
+        function redirigir(idpr, sexid) {
             var destino = "<?php echo isset($cedula) && !empty($cedula) ? 'index.php' : 'login.php'; ?>";
             if (destino === 'index.php') {
-                window.location.href = 'buscar.php?pr=' + idpr+'&h='+ '<?php echo $hash ?>';
+                window.location.href = 'buscar.php?pr=' + idpr+'&h='+ '<?php echo $hash ?>'+'&sex='+sexid;
             } else {
-                window.location.href = 'buscar.php?pr=' + idpr;
+                window.location.href = 'buscar.php?pr=' + idpr+'&sex='+sexid;
             }
         }
     </script>
@@ -600,10 +601,9 @@ li.group:hover .submenu {
   function loadCities2() {
     const provinciaSelect = document.getElementById("provinciaSelect2");
     const ciudadesContainer = document.getElementById("ciudadesContainer");
-
+    const sex= document.getElementById("estasBuscandoMobile");
     // Obtener el ID de la provincia seleccionada
     const provinciaId = provinciaSelect.value;
-
     // Si no se ha seleccionado una provincia válida, limpiar el contenedor de ciudades
     if (provinciaId === "0") {
         ciudadesContainer.innerHTML = ''; // Limpiar las ciudades
@@ -627,7 +627,8 @@ li.group:hover .submenu {
                     // Agregar el evento onclick para redirigir
                     ciudadLink.onclick = function(event) {
                         event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
-                        redirigir(ciudad.id);
+                        console.log(sex.value)
+                        redirigir(ciudad.id,sex.value); // Redirigir a la ciudad seleccionada
                     };
 
                     // Agregar el enlace al contenedor
@@ -649,14 +650,14 @@ li.group:hover .submenu {
   document.addEventListener("DOMContentLoaded", function () {
   const ciudadSelect = document.getElementById("ciudadSelect");
   const btnBuscarBuscador = document.getElementById("btnBuscarBuscador");
-
+  const sexSelect = document.getElementById("estasBuscando");
   // Escuchar el evento de cambio de selección en el select de ciudades
   ciudadSelect.addEventListener("change", function () {
     const ciudadId = ciudadSelect.value; // Obtener el ID de la ciudad seleccionada
-    
+    const sexId = sexSelect.value; // Obtener el ID de la ciudad seleccionada
     // Si se seleccionó una ciudad válida (diferente de 0), asignamos el ID al botón
     if (ciudadId !== "0") {
-      btnBuscarBuscador.setAttribute("onclick", `redirigir(${ciudadId})`);
+      btnBuscarBuscador.setAttribute("onclick", `redirigir(${ciudadId},${sexId})`);
     } else {
       // Si no se ha seleccionado una ciudad válida, asignamos un valor por defecto
       btnBuscarBuscador.setAttribute("onclick", `redirigir(19)`);

@@ -233,11 +233,15 @@ class ProfesionalController
         return $profesional;
     }
 
-    public function getProfesionalByCiudad($link,$ciudad)
+    public function getProfesionalByCiudad($link,$ciudad, $sex = false)
     {
         if(isset($ciudad))
         {
             $query = "SELECT * FROM profesionales inner join fotos on profesionales.id = fotos.userId where fotoPrincipal = fotos.idfotos and ciudad = '$ciudad'";
+            if(isset($sex))
+            {
+                $query .= " and sexo = '$sex'";
+            }
             $result = mysqli_query($link,$query);
             $profesional = [];
             

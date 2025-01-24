@@ -16,6 +16,11 @@
 body {
     overflow: hidden; /* Evita el desplazamiento */
 }
+
+#inscribirse
+{
+   background-color: #003366;
+}
 		</style>
   </head>
   <body>
@@ -345,8 +350,9 @@ body {
           <div class="w-96 max-w-full mt-4">
             <p class="text-center">¿Aún no tiene cuenta?</p>
             <button
+            id="inscribirse"
             onclick="location.href='pages/select-registro.php'"
-              class="w-full border-0 cursor-pointer mt-4 py-4 bg-gray-300 hover:bg-gray-400 uppercase text-purple-100 font-bold rounded-full transition-all duration-300 ease-in-out"
+              class="w-full border-0 cursor-pointer mt-4 py-4 hover:bg-gray-400 uppercase text-purple-100 font-bold rounded-full transition-all duration-300 ease-in-out"
             >
               Inscribirse
             </button>

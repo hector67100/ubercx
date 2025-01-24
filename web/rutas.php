@@ -11,7 +11,7 @@ include('php_lib/login.lib.php');
 
 $collector = new RouteCollector();
 
-$collector->get('/login', function() {
+$collector->post('/login', function() {
     $link = (new BDcon())->conect();
 	$cedula=$_POST['email'];
 	$pass=$_POST['password'];

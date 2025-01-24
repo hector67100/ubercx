@@ -667,7 +667,7 @@ li.group:hover .submenu {
                   class="w-5 h-5"
                   src="assets/iconName.png"
                   alt=""
-                /><?php echo $profesionales["ciudad"]?>, Aranjuez</span
+                /><?php echo $profesionales["ciudad"]?>, <?php echo $profesionales["pais"]?></span
               >
               <span class="flex items-center gap-2"
                 ><img
