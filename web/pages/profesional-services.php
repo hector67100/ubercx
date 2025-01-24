@@ -366,9 +366,11 @@ $(document).ready(function() {
     type: 'get',
     contentType: "application/json; charset=utf-8",
     success: function(response){
-     serviciosActivos= JSON.parse(JSON.parse(response).servicios);
-     if(serviciosActivos.length > 0)
+      let serviciosUsuario =JSON.parse(JSON.parse(response).servicios);
+     
+     if(serviciosUsuario)
      {
+      serviciosActivos = serviciosUsuario;
       serviciosActivos.map((serv) => {
         let stringServicio =`
                       <div class="service-container mb-10">
