@@ -88,7 +88,7 @@ session_start();
 
         .imagen-perfil
         {
-            background-image: url("<?php echo $root.$profesional["ruta"];?>");
+            background-image: url("<?php echo $profesional["ruta"];?>");
             background-size: cover;
             background-position: center;
             border-radius: 55px;
