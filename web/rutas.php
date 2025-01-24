@@ -106,6 +106,38 @@ $collector->get('/panel-info/get-paises', function() {
     return json_encode($ciudades);
 });
 
+$collector->get('/panel-info/get-sexo', function() {
+    $link = (new BDcon())->conect();
+    $sexo = (new PanelInfo())->getSexoApi($link);
+    return json_encode($sexo);
+});
+
+$collector->get('/panel-info/get-cabello', function() {
+    $link = (new BDcon())->conect();
+    $ciudades = (new PanelInfo())->getCabelloApi($link);
+    return json_encode($ciudades);
+});
+
+$collector->get('/panel-info/get-piel', function() {
+    $link = (new BDcon())->conect();
+    $ciudades = (new PanelInfo())->getPielApi($link);
+    return json_encode($ciudades);
+});
+
+$collector->get('/panel-info/get-complexion', function() {
+    $link = (new BDcon())->conect();
+    $ciudades = (new PanelInfo())->getComplexionApi($link);
+    return json_encode($ciudades);
+});
+
+$collector->get('/panel-info/get-pechos', function() {
+    $link = (new BDcon())->conect();
+    $ciudades = (new PanelInfo())->getPechosApi($link);
+    return json_encode($ciudades);
+});
+
+
+
 $despachador = new Dispatcher($collector->getData());
 $rutaCompleta = str_replace("web/rutas.php","", $_SERVER["REQUEST_URI"]);
 $metodo = $_SERVER['REQUEST_METHOD'];

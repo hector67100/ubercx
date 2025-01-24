@@ -108,5 +108,66 @@ class PanelInfo
         }
         return $categorias;
     }
+
+    public function getSexoApi($link)
+    {
+        $query = "SELECT id,descripcion FROM detalles WHERE clave = '2'";
+        $result = mysqli_query($link,$query);
+        $resultado = [];
+        while($row = mysqli_fetch_row($result))
+        {
+            array_push($resultado, $row);
+        }
+        return $resultado;
+    }
+
+    public function getCabelloApi($link)
+    {
+        $query = "SELECT id,descripcion FROM detalles WHERE clave = '3'";
+        $result = mysqli_query($link,$query);
+        $resultado = [];
+        while($row = mysqli_fetch_assoc($result))
+        {
+            array_push($resultado, $row);
+        }
+        return $resultado;
+    }
+
+    public function getPielApi($link)
+    {
+        $query = "SELECT id,descripcion FROM detalles WHERE clave = '4'";
+        $result = mysqli_query($link,$query);
+        $resultado = [];
+        while($row = mysqli_fetch_assoc($result))
+        {
+            array_push($resultado, $row);
+        }
+        return $resultado;
+    }
+
+    public function getComplexionApi($link)
+    {
+        $query = "SELECT id,descripcion FROM detalles  WHERE clave = '5'";
+        $result = mysqli_query($link,$query);
+        $resultado = [];
+        while($row = mysqli_fetch_assoc($result))
+        {
+            array_push($resultado, $row);
+        }
+        return $resultado;
+    }
+
+    public function getPechosApi($link)
+    {
+        $query = "SELECT id,descripcion FROM detalles WHERE clave = '8'";
+        $result = mysqli_query($link,$query);
+        $resultado = [];
+        while($row = mysqli_fetch_assoc($result))
+        {
+            array_push($resultado, $row);
+        }
+        return $resultado;
+    }
+
 }
 ?>
