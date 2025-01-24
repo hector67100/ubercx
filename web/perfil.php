@@ -627,7 +627,7 @@ li.group:hover .submenu {
             <div class="flex justify-between">
               <div class="flex items-center gap-2">
                 <img
-                  class="w-20 h-20"
+                  class="w-20 h-20 rounded-full"
                   src="<?php echo str_replace("../","", $profesionales['ruta'])?>"
                   alt=""
                 /><span class="font-bold text-xl txtRed"><?php echo $profesionales["nombre"]?></span>
@@ -802,7 +802,7 @@ li.group:hover .submenu {
                       class="swiper-zoom-target h-full flex items-center justify-center"
                     >
                       <img
-                        class="object-contain"
+                        class="object-contain "
                         src="<?php echo str_replace("../","", $profesionales['ruta'])?>"
                         alt="Escorts 🇦🇷 Argentina en Palermo: 1127617113 - Muy putita re fogosa Me gusta todo bebé"
                         loading="lazy"
