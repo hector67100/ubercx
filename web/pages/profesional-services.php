@@ -143,6 +143,12 @@ $categorias = (new PanelInfo())->getCategories($link);
           width: 11%;
         }
 
+        .service-precio
+        {
+          position: relative;
+          width: 25%;
+        }
+
         .service-select select
         {
           padding: 12px 0;
@@ -152,12 +158,6 @@ $categorias = (new PanelInfo())->getCategories($link);
         {
           width: 50%;
           margin: 0 auto 10px 10%;
-        }
-
-        .service-precio
-        {
-          position: relative;
-          width: 25%;
         }
 
         .service-precio input
@@ -262,6 +262,98 @@ $categorias = (new PanelInfo())->getCategories($link);
             width: 100%;
           }
 
+        }
+        @media (max-width: 1620px) and (min-width: 1280px) {
+          #imagen-registro
+          {
+            width: 50%;
+          }
+
+          .service-select
+          {
+            width: 50%;
+          }
+
+          .service-button
+          {
+            width: 11%;
+          }
+
+          .service-precio
+          {
+            position: relative;
+            width: 35%;
+          }
+        }
+
+        @media (max-width: 768px){
+          #imagen-registro
+          {
+            display: none;  
+          }
+
+          .service-select
+          {
+            width: 50%;
+          }
+
+          .service-button
+          {
+            width: 11%;
+          }
+
+          .service-precio
+          {
+            position: relative;
+            width: 35%;
+          }
+        }
+
+        @media (max-width: 1280px)
+        {
+          .service-container
+          {
+            flex-direction: column;
+          }
+          .service-select
+          {
+            width: 80%;
+          }
+
+          .service-button
+          {
+            width:80%;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .service-button button
+          {
+            margin: 0 auto;
+          }
+
+          .service-precio
+          {
+            position: relative;
+            width: 80%;
+          }
+
+          .service-precio input
+          {
+            text-align: center;
+            padding: 2.5%;
+
+          }
+
+          .service-title img
+          {
+            margin: auto;
+          }
+
+          .service-title h3
+          {
+            margin: auto;
+          }
         }
 	</style>
   </head>
